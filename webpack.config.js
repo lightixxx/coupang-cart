@@ -13,5 +13,6 @@ module.exports = {
       exclude: /node_modules/,
       loader: "style-loader!css-loader"
     }]
-  }
+  },
+  devtool: "eval-source-map"
 }
