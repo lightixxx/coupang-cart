@@ -29,13 +29,17 @@ export default function CartProductTableRow({products, title}) {
             </td>
             <td>
               {product.name}
+              <hr />
+              <span style={{color: "#ff4949", fontSize: 13}}>
+                {product.inventory === 0 ? '품절' : product.inventory < 5 ? `품절임박: 잔여 ${product.inventory}개` : ''}
+              </span>
             </td>
             <td>
               {product.price}
             </td>
             <td>
-              <select defaultValue={1}>
-                <option>1</option>
+              <select defaultValue={1} disabled={product.inventory === 0}>
+                {[1,2,3,4,5,6,7,8,9,10].map(it => <option ket={it} disabled={product.inventory < it}>{it}</option> )}
               </select>
             </td>
             <td>
