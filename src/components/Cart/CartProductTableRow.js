@@ -10,7 +10,7 @@ function type({type}) {
   }
 }
 
-export default function CartProductTableRow({products, title}) {
+export default function CartProductTableRow({products, title, onSelectChangeHandler}) {
   return (
     <>
       <tr>
@@ -38,7 +38,9 @@ export default function CartProductTableRow({products, title}) {
               {product.price}
             </td>
             <td>
-              <select defaultValue={1} disabled={product.inventory === 0}>
+              <select value={product.count} 
+                      onChange={(e) => onSelectChangeHandler(product, Number(e.target.value))} 
+                      disabled={product.inventory === 0}>
                 {[1,2,3,4,5,6,7,8,9,10].map(it => <option ket={it} disabled={product.inventory < it}>{it}</option> )}
               </select>
             </td>
