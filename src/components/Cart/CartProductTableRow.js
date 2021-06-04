@@ -1,6 +1,7 @@
 import React from "react"
 import RocketFreshIcon from "../RocketIcon/RocketFreshIcon.js"
 import RocketWowIcon from "../RocketIcon/RocketWowIcon.js"
+import comma from "../../utils/NumberUtil"
 
 function type({type}) {
   switch (type) {
@@ -35,7 +36,7 @@ export default function CartProductTableRow({products, title, onSelectChangeHand
               </span>
             </td>
             <td>
-              {product.price}
+              {comma(product.price)}
             </td>
             <td>
               <select value={product.count} 
@@ -45,7 +46,7 @@ export default function CartProductTableRow({products, title, onSelectChangeHand
               </select>
             </td>
             <td>
-              {product.price * product.count}
+              {comma(product.price * product.count)}
             </td>
             <td>
               {type(product)}
