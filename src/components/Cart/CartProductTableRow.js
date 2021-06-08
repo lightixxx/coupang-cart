@@ -11,7 +11,7 @@ function type({type}) {
   }
 }
 
-export default function CartProductTableRow({products, title, onSelectChangeHandler}) {
+export default function CartProductTableRow({products, title, onSelectChangeHandler, onCheckboxChangeHandler}) {
   return (
     <>
       <tr>
@@ -23,7 +23,11 @@ export default function CartProductTableRow({products, title, onSelectChangeHand
         return (
           <tr key={product.id}>
             <td>
-              <input type={"checkbox"} />
+              <input type={"checkbox"} 
+                    checked={product.checked}
+                    disabled={product.inventory === 0}
+                    onChange={(e) => onCheckboxChangeHandler(product, e.target.checked)}
+              />
             </td>
             <td>
               <img src={product.img} alt={product.name} />
