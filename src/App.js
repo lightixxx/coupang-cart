@@ -5,33 +5,34 @@ import comma from "./utils/NumberUtil.js";
 
 
 export default function App() {
-  const [products, setProducts] = useState(data.products)
+  const [products, _setProducts] = useState(data.products)
   const total = products.filter(it => it.checked)
                         .reduce((total, product) => total + product.price * product.count, 0)
+                        
   const onSelectChangeHandler = (product, value) => {
-    const newProducts = products.map(it => {
-      if (it === product) {
-        return {
-          ...it,
-          count: value
-        }
-      }
-      return it
-    })
-    setProducts(newProducts)
+    setProducts(product, (it) => ({
+      ...it,
+      count: value
+    }))
   }
 
   const onCheckboxChangeHandler = (product, value) => {
+    setProducts(product, (it) => ({
+      ...it,
+      checked: value
+    }))
+  }
+
+  const setProducts = (product, callback) => {
     const newProducts = products.map(it => {
       if (it === product) {
         return {
-          ...it,
-          checked: value
+          ...callback(it)
         }
       }
       return it
     })
-    setProducts(newProducts)
+    _setProducts(newProducts)
   }
 
   return (
