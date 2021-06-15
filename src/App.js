@@ -35,8 +35,29 @@ export default function App() {
     _setProducts(newProducts)
   }
 
+  const onAllCheckboxHandler = (e) => {
+    const newProducts = products.map(it => {
+      if(it.inventory === 0) {
+        return {
+          ...it
+        }
+      }
+      return {
+        ...it,
+        checked: e.target.checked,
+      }
+    })
+    _setProducts(newProducts)
+  }
+
   return (
       <div>
+        <div>
+          <label>
+            <input type={"checkbox"} onClick={onAllCheckboxHandler} />
+            전체선택 {products.filter(it => it.checked).length} / {products.length}
+          </label>
+        </div>
         <table>
           <tbody>
             <CartProductTableRow title={'로켓프레시'} 
