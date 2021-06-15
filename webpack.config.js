@@ -14,5 +14,9 @@ module.exports = {
       loader: "style-loader!css-loader"
     }]
   },
-  devtool: "eval-source-map"
+  devtool: "eval-source-map",
+  externals: {
+    react: "React",
+    "react-dom": "ReactDom"
+  }
 }
