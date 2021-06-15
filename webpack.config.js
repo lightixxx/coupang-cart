@@ -1,4 +1,5 @@
 const mode = process.env.NODE_ENV === "production" ? "production" : "development"
+const isProduction = mode === "production"
 const watch = mode !== "production"
 module.exports = {
   mode,
@@ -14,9 +15,9 @@ module.exports = {
       loader: "style-loader!css-loader"
     }]
   },
-  devtool: "eval-source-map",
+  devtool: isProduction ? false : "eval-source-map",
   externals: {
-    react: "React",
-    "react-dom": "ReactDom"
+    "react": "React",
+    "react-dom": "ReactDOM"
   }
 }
