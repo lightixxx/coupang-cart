@@ -11,7 +11,7 @@ function type({type}) {
   }
 }
 
-export default function CartProductTableRow({products, title, onSelectChangeHandler, onCheckboxChangeHandler}) {
+export default function CartProductTableRow({products, title, onSelectChangeHandler, onCheckboxChangeHandler, onDeleteHandler}) {
   return (
     <>
       <tr>
@@ -38,6 +38,9 @@ export default function CartProductTableRow({products, title, onSelectChangeHand
               <span style={{color: "#ff4949", fontSize: 13}}>
                 {product.inventory === 0 ? '품절' : product.inventory < 5 ? `품절임박: 잔여 ${product.inventory}개` : ''}
               </span>
+              <button style={{float: "right"}} onClick={() => onDeleteHandler(product)}>
+                X
+              </button>
             </td>
             <td>
               {comma(product.price)}

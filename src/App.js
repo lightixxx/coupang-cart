@@ -50,6 +50,11 @@ export default function App() {
     _setProducts(newProducts)
   }
 
+  const onDeleteHandler = (product) => {
+    const newProducts = products.filter(it => it !== product)
+    _setProducts(newProducts)
+  }
+
   return (
       <div>
         <div>
@@ -64,16 +69,19 @@ export default function App() {
                                 products={products.filter(it => it.type === 'ROCKET_FRESH')} 
                                 onSelectChangeHandler={onSelectChangeHandler}
                                 onCheckboxChangeHandler={onCheckboxChangeHandler}
+                                onDeleteHandler={onDeleteHandler}
             />
             <CartProductTableRow title={'로켓와우'}
                                 products={products.filter(it => it.type === 'ROCKET_WOW')}
                                 onSelectChangeHandler={onSelectChangeHandler}
                                 onCheckboxChangeHandler={onCheckboxChangeHandler}
+                                onDeleteHandler={onDeleteHandler}
             />
             <CartProductTableRow title={'판매자 배송상품'}
                                 products={products.filter(it => it.type === 'PARTNER')}
                                 onSelectChangeHandler={onSelectChangeHandler}
                                 onCheckboxChangeHandler={onCheckboxChangeHandler}
+                                onDeleteHandler={onDeleteHandler}
             />
           </tbody>
         </table>
