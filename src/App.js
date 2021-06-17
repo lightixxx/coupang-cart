@@ -55,6 +55,16 @@ export default function App() {
     _setProducts(newProducts)
   }
 
+  const onBuyHandler = () => {
+    const target = products.filter(it => it.checked).map(it => {
+      return {
+        id: it.id,
+        count: it.count
+      }
+    })
+    console.log(target)
+  }
+
   return (
       <div>
         <div>
@@ -87,6 +97,11 @@ export default function App() {
         </table>
         <div>
           총합계: {comma(total)}
+        </div>
+        <div>
+          <button onClick={onBuyHandler}>
+            구매하기
+          </button>
         </div>
       </div>
   )
